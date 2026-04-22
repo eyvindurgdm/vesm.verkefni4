@@ -3,12 +3,9 @@
 ## **Spil concept** <sup>(Pitch-Perfect)</sup>
 ### **4** takkar fyrir hvern leikmann. Það eru tveir leikmenn.
 Takkarnir lýsast upp með fjórum öðruvísi pitch/hljóðum.
-Báðir leikmenn hafa 30 sekóndu klukku.
+Báðir leikmenn hafa 30 sekóndu klukku sem telur niður.
 
-Þegar leikmaðurinn ýtir á réttan takka, þá byrjar það strax hjá hinum leikmaninum.
-Og þessar 30 sekóndur eru að minnka eftir hversu lengi þú ert að ýta á rétta takkan.
-Ef þú ýtir á vitlausan takka, þá færða 3 sekondu refsun.
+Þegar leikmaðurinn ýtir á réttan takka þá pásast klukkan og klukkan hjá hinum leikmanninum byrjar.
+Ef þú ýtir á vitlausan takka, þá tapar þú 3 sekundum.
 
-Eftir að hver leikamðurinn er búin að spila 2 umferðrir (4 umferðir í heild), þá fer ljósið, og verður þá bara hljóð.
-
-
+Eftir tvær umferðrir (4 takkar í heild), þá hættir ljósið að blikka og leikmenn verða að ýta á réttan takka miðað við hljóðið.
