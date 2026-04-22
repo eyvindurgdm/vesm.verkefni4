@@ -12,4 +12,4 @@ Ef þú ýtir á vitlausan takka, þá færða 3 sekondu refsun.
 
 Eftir að hver leikamðurinn er búin að spila 2 umferðrir (4 umferðir í heild), þá fer ljósið, og verður þá bara hljóð.
 
-myndir
+![Myndir](path/to/image.png)
