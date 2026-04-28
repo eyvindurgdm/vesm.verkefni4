@@ -7,19 +7,21 @@ takkar = [
     Pin(1, Pin.IN),   
     Pin(2, Pin.IN), 
     Pin(3, Pin.IN), 
-    Pin(4, Pin.IN),   
-    Pin(5, Pin.IN),
-    Pin(6, Pin.IN),
-    Pin(7, Pin.IN),
-    Pin(8, Pin.IN)
+    Pin(4, Pin.IN),
+
+    Pin(9, Pin.IN),
+    Pin(10, Pin.IN),
+    Pin(11, Pin.IN),
+    Pin(12, Pin.IN)
 ]
 
 
 led = [
-    Pin(9, Pin.OUT),
-    Pin(10, Pin.OUT),
-    Pin(11, Pin.OUT),
-    Pin(12, Pin.OUT),
+    Pin(5, Pin.OUT),
+    Pin(6, Pin.OUT),
+    Pin(7, Pin.OUT),
+    Pin(8, Pin.OUT),
+
     Pin(13, Pin.OUT),
     Pin(14, Pin.OUT),
     Pin(15, Pin.OUT),
