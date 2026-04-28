@@ -1,4 +1,5 @@
-from machine import Pin, PWM
+from machine import Pin, PWM, SoftI2C
+from I2C_LCD import I2cLcd
 import time
 import random
 
