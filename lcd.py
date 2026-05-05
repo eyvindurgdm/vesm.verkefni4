@@ -1,5 +1,5 @@
 from machine import Pin, SoftI2C
-from I2C_LCD import I2cLcd
+import I2cLcd
 
 # Skjárinn nota I2C tengingu til að tala við ESP
 i2c = SoftI2C(scl=Pin(13), sda=Pin(14), freq=400000)
