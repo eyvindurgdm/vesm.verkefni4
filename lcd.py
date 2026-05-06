@@ -91,7 +91,7 @@ while True:
     
     if umferd == 1:
         if punish.value() == 0:
-            timer1sec = timer1sec - 2
+            timer1sec = timer1sec - 25
             while punish.value() == 0:
                 sleep_ms(10)
             umferd = 2
