@@ -3,6 +3,9 @@ from I2C_LCD import I2cLcd
 import time
 import random
 
+i2c = SoftI2C(scl=Pin(13), sda=Pin(14), freq=400000)
+lcd = I2cLcd(i2c, 39, 2, 16)
+
 
 takkar = [
     Pin(1, Pin.IN),   
@@ -161,7 +164,7 @@ def spila_umferd(kennsla):
 
 # AðAAl LEIKUR
 
-def leikur(ö):
+def leikur():
 
     timar = [0,0]  # geymir tima fyrir 2 leikmenn
 
