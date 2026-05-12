@@ -77,6 +77,7 @@ while True:
 timerstartms = 99
 timerstartsec = 14
 timebil = 500
+punish = 2
 
 #temporary
 umferd = 1
@@ -86,14 +87,27 @@ timer1sec = timerstartsec
 timer2ms = timerstartms
 timer2sec = timerstartsec
 
-
-
-
 lcd1.clear()
 lcd2.clear()
 lcd1.move_to(4,0)
 lcd2.move_to(4,0)
 
+
+#velur hvaða takkar eru með hvaða hljóð
+#i.e [4,1,3,2]
+#takki 1 er hæðstur, takki 2 er lægstur, takki 3 er næst hæðstur og takki 4 er næst minnstur
+takkarhljod = []
+takkival = 0
+count = 4
+while count != 0:
+    takkarrand = random.randint(1,4)
+    if takkarrand in takkarhljod:
+        pass
+    else:
+        takkarhljod.append(takkarrand)
+        count = count - 1
+
+umferdigangi = False
 
 while True:
     takki1_stada = takki1.value()
@@ -110,6 +124,7 @@ while True:
         timer1sec = timer1sec - 1
     if timer1sec < 0 or resettakki.value() == 0:
         #end condition
+        umferdigangi = False
         timer1sec = timerstartsec
         timer2sec = timerstartsec
         timer1ms = timerstartms
@@ -118,11 +133,22 @@ while True:
         lcd2.clear()
         sleep_ms(1000)
         umferd = random.randint(1,2)
+        count = 4
+        takkarhljod.clear()
+        while count != 0:
+            takkarrand = random.randint(1,4)
+            if takkarrand in takkarhljod:
+                pass
+            else:
+                takkarhljod.append(takkarrand)
+                count = count - 1
         
     if timer2ms < 0:
         timer2ms = 99
         timer2sec = timer2sec - 1
     if timer2sec < 0:
+        #end condition
+        umferdigangi = False
         timer1sec = timerstartsec
         timer2sec = timerstartsec
         timer1ms = timerstartms
@@ -131,6 +157,15 @@ while True:
         lcd2.clear()
         sleep_ms(1000)
         umferd = random.randint(1,2)
+        count = 4
+        takkarhljod.clear()
+        while count != 0:
+            takkarrand = random.randint(1,4)
+            if takkarrand in takkarhljod:
+                pass
+            else:
+                takkarhljod.append(takkarrand)
+                count = count - 1
         
 
     
@@ -159,11 +194,217 @@ while True:
         lcd2.move_to(5,0)
     lcd2.putstr(str(timer2sec))
     
+    if umferdigangi == False:
+        led1.value(0)
+        led2.value(0)
+        led3.value(0)
+        led4.value(0)
+        led5.value(0)
+        led6.value(0)
+        led7.value(0)
+        led8.value(0)
     
-    
+    takkarumferd = 0
+    if umferd == 1 and umferdigangi == False:
+        takkival = random.randint(0,3)
+        takkarumferd = takkarhljod[takkival]
+        led1.value(0)
+        led2.value(0)
+        led3.value(0)
+        led4.value(0)
+        led5.value(0)
+        led6.value(0)
+        led7.value(0)
+        led8.value(0)
+        sleep_ms(timebil)
+            
+        if takkival == 0:
+            led1.value(1)
+        if takkival == 1:
+            led2.value(1)
+        if takkival == 2:
+            led3.value(1)
+        if takkival == 3:
+            led4.value(1)
+        
+        print(takkival)
+        umferdigangi = True
+        
+    else:
+        if umferd == 2 and umferdigangi == False:
+            takkival = random.randint(0,3)
+            takkarumferd = takkarhljod[takkival]
+            sleep_ms(timebil)
+        
+            
+            if takkival == 0:
+                led5.value(1)
+            if takkival == 1:
+                led6.value(1)
+            if takkival == 2:
+                led7.value(1)
+            if takkival == 3:
+                led8.value(1)
+        
+            print(takkival)
+            umferdigangi = True
+
+        
+    if umferd == 1 and umferdigangi == True:
+        if takki1_stada == 0:
+            if takkival == 0:
+                umferd = 2
+                umferdigangi = False
+            if takkival == 1:
+                umferd = 2
+                umferdigangi = False
+                timer1sec = timer1sec - punish
+            if takkival == 2:
+                umferd = 2
+                umferdigangi = False
+                timer1sec = timer1sec - punish
+            if takkival == 3:
+                umferd = 2
+                umferdigangi = False
+                timer1sec = timer1sec - punish
+                
+        if takki2_stada == 0:
+            if takkival == 0:
+                umferd = 2
+                umferdigangi = False
+                timer1sec = timer1sec - punish
+            if takkival == 1:
+                umferd = 2
+                umferdigangi = False
+            if takkival == 2:
+                umferd = 2
+                umferdigangi = False
+                timer1sec = timer1sec - punish
+            if takkival == 3:
+                umferd = 2
+                umferdigangi = False
+                timer1sec = timer1sec - punish
+                
+        if takki3_stada == 0:
+            if takkival == 0:
+                umferd = 2
+                umferdigangi = False
+                timer1sec = timer1sec - punish
+            if takkival == 1:
+                umferd = 2
+                umferdigangi = False
+                timer1sec = timer1sec - punish
+            if takkival == 2:
+                umferd = 2
+                umferdigangi = False
+            if takkival == 3:
+                umferd = 2
+                umferdigangi = False
+                timer1sec = timer1sec - punish
+                
+        if takki4_stada == 0:
+            if takkival == 0:
+                umferd = 2
+                umferdigangi = False
+                timer1sec = timer1sec - punish
+            if takkival == 1:
+                umferd = 2
+                umferdigangi = False
+                timer1sec = timer1sec - punish
+            if takkival == 2:
+                umferd = 2
+                umferdigangi = False
+                timer1sec = timer1sec - punish
+            if takkival == 3:
+                umferd = 2
+                umferdigangi = False
+
+        
+        timer1ms = timer1ms - 1
+    else:
+
+        if umferd == 2 and umferdigangi == True:
+            if takki5_stada == 0:
+                if takkival == 0:
+                    umferd = 1
+                    umferdigangi = False
+                if takkival == 1:
+                    umferd = 1
+                    umferdigangi = False
+                    timer2sec = timer2sec - punish
+                if takkival == 2:
+                    umferd = 1
+                    umferdigangi = False
+                    timer2sec = timer2sec - punish
+                if takkival == 3:
+                    umferd = 1
+                    umferdigangi = False
+                    timer2sec = timer2sec - punish
+                    
+            if takki6_stada == 0:
+                if takkival == 0:
+                    umferd = 1
+                    umferdigangi = False
+                    timer2sec = timer2sec - punish
+                if takkival == 1:
+                    umferd = 1
+                    umferdigangi = False
+                if takkival == 2:
+                    umferd = 1
+                    umferdigangi = False
+                    timer2sec = timer2sec - punish
+                if takkival == 3:
+                    umferd = 1
+                    umferdigangi = False
+                    timer2sec = timer2sec - punish
+                
+            if takki7_stada == 0:
+                if takkival == 0:
+                    umferd = 1
+                    umferdigangi = False
+                    timer2sec = timer2sec - punish
+                if takkival == 1:
+                    umferd = 1
+                    umferdigangi = False
+                    timer2sec = timer2sec - punish
+                if takkival == 2:
+                    umferd = 1
+                    umferdigangi = False
+                if takkival == 3:
+                    umferd = 1
+                    umferdigangi = False
+                    timer2sec = timer2sec - punish
+                
+            if takki8_stada == 0:
+                if takkival == 0:
+                    umferd = 1
+                    umferdigangi = False
+                    timer2sec = timer2sec - punish
+                if takkival == 1:
+                    umferd = 1
+                    umferdigangi = False
+                    timer2sec = timer2sec - punish
+                if takkival == 2:
+                    umferd = 1
+                    umferdigangi = False
+                    timer2sec = timer2sec - punish
+                if takkival == 3:
+                    umferd = 1
+                    umferdigangi = False
+
+        
+            timer2ms = timer2ms - 1
+            
+            
+    sleep_ms(5)
+               
+            
+        
+        
+        
         
     
-    
+    """
     if umferd == 1:
         if takki1_stada == 0:
             umferd = 2
@@ -178,4 +419,6 @@ while True:
                 sleep_ms(timebil)
             else:
                 timer2ms = timer2ms - 1
-        
+        """
+    
+    
