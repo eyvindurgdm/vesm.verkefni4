@@ -1,34 +1,41 @@
-from machine import Pin, SoftI2C
+from machine import Pin, SoftI2C, PWM
 from I2C_LCD import I2cLcd
 from time import sleep_ms
 import random
 
 
-i2c1 = SoftI2C(scl=Pin(5), sda=Pin(4), freq=400000)
-lcd1 = I2cLcd(i2c1, 0x27, 2, 16)
+i2c2 = SoftI2C(scl=Pin(2), sda=Pin(42), freq=400000)
+lcd2 = I2cLcd(i2c2, 39, 2, 16)
 
-i2c2 = SoftI2C(scl=Pin(7), sda=Pin(6), freq=400000)
-lcd2 = I2cLcd(i2c2, 0x27, 2, 16)
 
-resettakki = Pin(19, Pin.IN, Pin.PULL_UP)
 
-takki1 = Pin(15, Pin.IN, Pin.PULL_UP)
-led1= Pin(16, Pin.OUT)
-takki2 = Pin(17, Pin.IN, Pin.PULL_UP)
-led2 = Pin(18, Pin.OUT)
-takki3 = Pin(8, Pin.IN, Pin.PULL_UP)
-led3 = Pin(3, Pin.OUT)
-takki4 = Pin(9, Pin.IN, Pin.PULL_UP)
-led4 = Pin(10, Pin.OUT)
+i2c1 = SoftI2C(scl=Pin(10), sda=Pin(9), freq=400000)
+lcd1 = I2cLcd(i2c1, 39, 2, 16)
 
-takki5 = Pin(39, Pin.IN, Pin.PULL_UP)
-led5 = Pin(42, Pin.OUT)
-takki6 = Pin(38, Pin.IN, Pin.PULL_UP)
-led6 = Pin(41, Pin.OUT)
-takki7 = Pin(35, Pin.IN, Pin.PULL_UP)
-led7 = Pin(37, Pin.OUT)
-takki8 = Pin(20, Pin.IN, Pin.PULL_UP)
-led8 = Pin(45, Pin.OUT)
+
+
+resettakki = Pin(40, Pin.IN, Pin.PULL_UP)
+
+takki1 = Pin(47, Pin.IN, Pin.PULL_UP)
+led1= Pin(21, Pin.OUT)
+takki2 = Pin(35, Pin.IN, Pin.PULL_UP)
+led2 = Pin(48, Pin.OUT)
+
+takki3 = Pin(5, Pin.IN, Pin.PULL_UP)
+led3 = Pin(4, Pin.OUT)
+takki4 = Pin(7, Pin.IN, Pin.PULL_UP)
+led4 = Pin(6, Pin.OUT)
+
+takki5 = Pin(37, Pin.IN, Pin.PULL_UP)
+led5 = Pin(36, Pin.OUT)
+takki6 = Pin(39, Pin.IN, Pin.PULL_UP)
+led6 = Pin(38, Pin.OUT)
+
+takki7 = Pin(16, Pin.IN, Pin.PULL_UP)
+led7 = Pin(15, Pin.OUT)
+takki8 = Pin(18, Pin.IN, Pin.PULL_UP)
+led8 = Pin(17, Pin.OUT)
+
 
 #ljós default off
 led1.value(0)
@@ -40,7 +47,7 @@ led6.value(0)
 led7.value(0)
 led8.value(0)
 
-
+#NÓTUR
 """
 ljoskveikt = False
 while True:
@@ -58,26 +65,37 @@ while True:
     print(resettakki.value(),"reset takki")
     
 
-    
     ljoskveikt = not ljoskveikt
     
     led1.value(ljoskveikt)
+    sleep_ms(50)
     led2.value(ljoskveikt)
+    sleep_ms(50)
     led3.value(ljoskveikt)
+    sleep_ms(50)
     led4.value(ljoskveikt)
+    sleep_ms(50)
     
     led5.value(ljoskveikt)
+    sleep_ms(50)
     led6.value(ljoskveikt)
+    sleep_ms(50)
     led7.value(ljoskveikt)
+    sleep_ms(50)
     led8.value(ljoskveikt)
-    sleep_ms(100)
+    sleep_ms(50)
+    
+    lcd1.move_to(8,0)
+    lcd1.putstr("1")
+    lcd2.move_to(8,0)
+    lcd2.putstr("2")
 
 """
-
+  
 
 timerstartms = 99
 timerstartsec = 14
-timebil = 500
+timebil = 200
 punish = 2
 umferd = random.randint(1,2)
 
@@ -140,7 +158,6 @@ while True:
                 count = count - 1
         lcd1.clear()
         lcd2.clear()
-        
         
     
     if timer1ms < 0:
@@ -252,8 +269,8 @@ while True:
         led7.value(0)
         led8.value(0)
         sleep_ms(timebil)
+        
         lcd1.clear()
-            
         if takkival == 0:
             led1.value(1)
         if takkival == 1:
@@ -262,6 +279,8 @@ while True:
             led3.value(1)
         if takkival == 3:
             led4.value(1)
+        else:
+            pass
         
         print(takkival)
         umferdigangi = True
@@ -272,8 +291,9 @@ while True:
             takkarumferd = takkarhljod[takkival]
             sleep_ms(timebil)
             lcd2.clear()
-        
+            sleep_ms(timebil)
             
+
             if takkival == 0:
                 led5.value(1)
             if takkival == 1:
@@ -282,6 +302,8 @@ while True:
                 led7.value(1)
             if takkival == 3:
                 led8.value(1)
+            else:
+                pass
         
             print(takkival)
             umferdigangi = True
@@ -435,27 +457,8 @@ while True:
             
     sleep_ms(5)
                
-            
-        
-        
-        
-        
-    
-    """
-    if umferd == 1:
-        if takki1_stada == 0:
-            umferd = 2
-            sleep_ms(timebil)
-        else:
-            timer1ms = timer1ms - 1
-            
-    else:
-        if umferd == 2:
-            if takki2_stada == 0:
-                umferd = 1
-                sleep_ms(timebil)
-            else:
-                timer2ms = timer2ms - 1
-        """
     
     
+
+
+
