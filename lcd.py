@@ -3,6 +3,7 @@ from I2C_LCD import I2cLcd
 from time import sleep_ms
 import random
 
+
 i2c1 = SoftI2C(scl=Pin(5), sda=Pin(4), freq=400000)
 lcd1 = I2cLcd(i2c1, 0x27, 2, 16)
 
@@ -78,14 +79,13 @@ timerstartms = 99
 timerstartsec = 14
 timebil = 500
 punish = 2
-
-#temporary
-umferd = 1
+umferd = random.randint(1,2)
 
 timer1ms = timerstartms
 timer1sec = timerstartsec
 timer2ms = timerstartms
 timer2sec = timerstartsec
+resettakki_stada = resettakki.value()
 
 lcd1.clear()
 lcd2.clear()
@@ -118,23 +118,19 @@ while True:
     takki6_stada = takki6.value()
     takki7_stada = takki7.value()
     takki8_stada = takki8.value()
-    resettakki_stada = resettakki.value()
-    if timer1ms < 0:
-        timer1ms = 99
-        timer1sec = timer1sec - 1
-    if timer1sec < 0 or resettakki.value() == 0:
+    if resettakki_stada == 0:
         #end condition
         umferdigangi = False
         timer1sec = timerstartsec
         timer2sec = timerstartsec
         timer1ms = timerstartms
         timer2ms = timerstartms
-        lcd1.clear()
-        lcd2.clear()
-        sleep_ms(1000)
         umferd = random.randint(1,2)
         count = 4
         takkarhljod.clear()
+        while resettakki_stada == 0:
+            sleep_ms(10)
+            resettakki_stada = resettakki.value()
         while count != 0:
             takkarrand = random.randint(1,4)
             if takkarrand in takkarhljod:
@@ -142,35 +138,69 @@ while True:
             else:
                 takkarhljod.append(takkarrand)
                 count = count - 1
+        lcd1.clear()
+        lcd2.clear()
         
+        
+    
+    if timer1ms < 0:
+        timer1ms = 99
+        timer1sec = timer1sec - 1
+    if timer1sec < 0:
+        lcd1.clear()
+        led1.value(0)
+        led2.value(0)
+        led3.value(0)
+        led4.value(0)
+        led5.value(0)
+        led6.value(0)
+        led7.value(0)
+        led8.value(0)
+
+        while resettakki_stada != 0:
+            timer1sec = 0
+            timer1ms = 0
+            lcd1.move_to(8,0)
+            lcd1.putstr("00")
+            lcd1.move_to(7,0)
+            lcd1.putstr(".")
+            lcd1.move_to(6,0)
+            lcd1.putstr("0")
+            sleep_ms(5)
+            resettakki_stada = resettakki.value()
     if timer2ms < 0:
         timer2ms = 99
         timer2sec = timer2sec - 1
     if timer2sec < 0:
-        #end condition
-        umferdigangi = False
-        timer1sec = timerstartsec
-        timer2sec = timerstartsec
-        timer1ms = timerstartms
-        timer2ms = timerstartms
-        lcd1.clear()
+        timer2sec = 0
+        timer2ms = 0
         lcd2.clear()
-        sleep_ms(1000)
-        umferd = random.randint(1,2)
-        count = 4
-        takkarhljod.clear()
-        while count != 0:
-            takkarrand = random.randint(1,4)
-            if takkarrand in takkarhljod:
-                pass
-            else:
-                takkarhljod.append(takkarrand)
-                count = count - 1
-        
-
+        led1.value(0)
+        led2.value(0)
+        led3.value(0)
+        led4.value(0)
+        led5.value(0)
+        led6.value(0)
+        led7.value(0)
+        led8.value(0)
+        while resettakki_stada != 0:
+            lcd2.move_to(8,0)
+            lcd2.putstr("00")
+            lcd2.move_to(7,0)
+            lcd2.putstr(".")
+            lcd2.move_to(6,0)
+            lcd2.putstr("0")
+            sleep_ms(5)
+            resettakki_stada = resettakki.value()
+    resettakki_stada = resettakki.value()
     
     lcd1.move_to(8,0)
-    lcd1.putstr(str(timer1ms))
+    if timer1ms < 10:
+        lcd1.putstr("0")
+        lcd1.move_to(9,0)
+        lcd1.putstr(str(timer1ms))
+    else:
+        lcd1.putstr(str(timer1ms))
     lcd1.move_to(7,0)
     lcd1.putstr(".")
     if timer1sec < 10 and timer1ms == 99:
@@ -183,7 +213,12 @@ while True:
     
     
     lcd2.move_to(8,0)
-    lcd2.putstr(str(timer2ms))
+    if timer2ms < 10:
+        lcd2.putstr("0")
+        lcd2.move_to(9,0)
+        lcd2.putstr(str(timer2ms))
+    else:
+        lcd2.putstr(str(timer2ms))
     lcd2.move_to(7,0)
     lcd2.putstr(".")
     if timer2sec < 10 and timer2ms == 99:
@@ -217,6 +252,7 @@ while True:
         led7.value(0)
         led8.value(0)
         sleep_ms(timebil)
+        lcd1.clear()
             
         if takkival == 0:
             led1.value(1)
@@ -235,6 +271,7 @@ while True:
             takkival = random.randint(0,3)
             takkarumferd = takkarhljod[takkival]
             sleep_ms(timebil)
+            lcd2.clear()
         
             
             if takkival == 0:
