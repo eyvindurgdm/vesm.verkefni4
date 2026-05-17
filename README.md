@@ -1,3 +1,5 @@
+
+
 # Verkefni4
 
 ## **Spil concept** <sup>(Pitch-Perfect)</sup>
@@ -19,4 +21,4 @@ Ef þú ýtir á vitlausan takka, þá tapar þú 3 sekundum.
 <!--- ![myndir](images/simplewire.jpg) --->
 <img src="images/simplewire.jpg" width="50%" height="70%">
 
-https://github.com/eyvindurgdm/vesm.verkefni4/blob/main/images/20260513162848.mp4
+https://github.com/user-attachments/assets/0c0fdb8b-b47f-4ff2-af42-3ea95ff234e5
