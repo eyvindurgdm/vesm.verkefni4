@@ -8,7 +8,13 @@ Báðir leikmenn hafa 30 sekóndu klukku sem telur niður þegar að þeir eiga 
 Þegar leikmaðurinn ýtir á réttan takka þá pásast klukkan þeirra og klukkan hjá hinum leikmanninum byrjar.
 Ef þú ýtir á vitlausan takka, þá tapar þú 3 sekundum.
 
-Eftir tvær umferðrir (4 takkar í heild), þá hættir ljósið að blikka og leikmenn verða að ýta á réttan takka miðað við hljóðið.
+~~Eftir tvær umferðrir (4 takkar í heild), þá hættir ljósið að blikka og leikmenn verða að ýta á réttan takka miðað við hljóðið~~ Ekki nógu mikill tími til að gera
 
 <!--- ![myndir](images/prototype.webp) --->
 <img src="images/prototype.webp" width="50%" height="70%">
+
+<!--- ![myndir](images/prototypeprogram.jpg) --->
+<img src="images/prototypeprogram.jpg" width="50%" height="70%">
+
+<!--- ![myndir](images/simplewire.jpg) --->
+<img src="images/images/simplewire.jpg" width="50%" height="70%">
