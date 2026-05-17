@@ -19,4 +19,4 @@ Ef þú ýtir á vitlausan takka, þá tapar þú 3 sekundum.
 <!--- ![myndir](images/simplewire.jpg) --->
 <img src="images/simplewire.jpg" width="50%" height="70%">
 
-[![video](https://raw.githubusercontent.com/eyvindurgdm/vesm.verkefni4/main/assets/thumbnail.jpg)](https://raw.githubusercontent.com/eyvindurgdm/vesm.verkefni4/main/assets/20260513162848.mp4)
+https://github.com/eyvindurgdm/vesm.verkefni4/blob/main/images/20260513162848.mp4
