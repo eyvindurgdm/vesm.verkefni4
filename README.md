@@ -17,4 +17,4 @@ Ef þú ýtir á vitlausan takka, þá tapar þú 3 sekundum.
 <img src="images/prototypeprogram.jpg" width="50%" height="70%">
 
 <!--- ![myndir](images/simplewire.jpg) --->
-<img src="images/images/simplewire.jpg" width="50%" height="70%">
+<img src="images/simplewire.jpg" width="50%" height="70%">
